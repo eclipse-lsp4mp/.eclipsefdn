@@ -37,6 +37,27 @@ orgs.newOrg('technology.lsp4mp', 'eclipse-lsp4mp') {
         },
       ],
     },
+    orgs.newRepo('org.eclipse.jdtls.featureext') {
+      allow_merge_commit: false,
+      allow_update_branch: false,
+      default_branch: "main",
+      delete_branch_on_merge: false,
+      dependabot_security_updates_enabled: true,
+      description: "Base classes and utilities to extend jdt.ls",
+      web_commit_signoff_required: false,
+      workflows+: {
+        default_workflow_permissions: "write",
+      },
+      webhooks: [
+        orgs.newRepoWebhook('https://ci.eclipse.org/lsp4mp/github-webhook/') {
+          content_type: "json",
+          events+: [
+            "pull_request",
+            "push"
+          ],
+        },
+      ],
+    },
   ],
 } + {
   # snippet added due to 'https://github.com/EclipseFdn/otterdog-configs/blob/main/blueprints/add-dot-github-repo.yml'
