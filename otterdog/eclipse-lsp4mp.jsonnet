@@ -36,6 +36,16 @@ orgs.newOrg('technology.lsp4mp', 'eclipse-lsp4mp') {
           ],
         },
       ],
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          "allows_deletions": false,
+          "allows_force_pushes": false,
+          required_approving_review_count: null,
+          requires_pull_request: false,
+          requires_status_checks: false,
+          requires_strict_status_checks: true,
+        },
+      ],
     },
   ],
 } + {
